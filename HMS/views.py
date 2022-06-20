@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from .forms import ReservationForm
+from django.contrib.auth.forms import UserCreationForm
+
 
 # Create your views here.
 
@@ -13,3 +16,11 @@ def contact(request):
 
 def services(request):
     return render(request, 'HMS/services.html', {'services':'WE RENDER GENUINE SERVICES EVEN AT ODD HOURS'})
+
+def create_reservation_view(request):
+    form = ReservationForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect(index)
+    #context['form']= ReservationForm()
+    return render(request, 'HMS/create_reservation.html', {'form':UserCreationForm})

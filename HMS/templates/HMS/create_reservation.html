@@ -1,0 +1,13 @@
+<body style="background-color: #36C5F0;">
+    <header style="text-align: center; margin-bottom: 50px;">
+        <a href="{% url 'index' %}">Home Page</a><br>
+    </header>
+    
+    <form action = "" method = "post" style="display: flex; flex-direction: column;">
+        {% csrf_token %}
+        {{form}}
+        <input type = "submit" value = "Submit">
+    </form>    
+</body>
+
+{% block content %} {% endblock %}
